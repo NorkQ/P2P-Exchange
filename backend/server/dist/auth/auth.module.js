@@ -8,29 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthModule = void 0;
 const common_1 = require("@nestjs/common");
-const jwt_1 = require("@nestjs/jwt");
-const passport_1 = require("@nestjs/passport");
-const auth_service_js_1 = require("./auth.service.js");
 const auth_controller_1 = require("./auth.controller");
-const users_service_1 = require("../users/users.service");
-const jwt_strategy_js_1 = require("./jwt.strategy.js");
-const prisma_module_1 = require("../prisma/prisma.module");
 let AuthModule = class AuthModule {
 };
 exports.AuthModule = AuthModule;
 exports.AuthModule = AuthModule = __decorate([
     (0, common_1.Module)({
-        imports: [
-            passport_1.PassportModule,
-            prisma_module_1.PrismaModule,
-            jwt_1.JwtModule.register({
-                secret: process.env.JWT_SECRET || 'CHANGE_ME',
-                signOptions: { expiresIn: '1d' },
-            }),
-        ],
         controllers: [auth_controller_1.AuthController],
-        providers: [auth_service_js_1.AuthService, users_service_1.UsersService, jwt_strategy_js_1.JwtStrategy],
-        exports: [auth_service_js_1.AuthService],
     })
 ], AuthModule);
 //# sourceMappingURL=auth.module.js.map
